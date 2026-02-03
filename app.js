@@ -215,3 +215,24 @@ function draw() {
 }
 
 resetBtn.onclick = () => { gameState.isPlaying = false; location.reload(); };
+
+// --- Auto-init logic ---
+window.addEventListener('load', () => {
+    // Default sample data for Dodgeball simulation
+    const defaultData = `10 3
+0 0
+100 100
+200 200
+N 1`;
+
+    // Use existing inputs if they are not empty, otherwise use defaultData
+    if (!inputText.value.trim() && !urlInput.value.trim()) {
+        inputText.value = defaultData;
+    }
+
+    if (urlInput.value.trim()) {
+        fetchBtn.click();
+    } else if (inputText.value.trim()) {
+        startBtn.click();
+    }
+});
