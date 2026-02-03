@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodgeball Pro Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="glass-container">
+        <header>
+            <h1>Dodgeball <span class="highlight">Visualizer</span></h1>
+            <p>Paste your input or upload a file to see the game in action.</p>
+        </header>
+
+        <div class="controls">
+            <div class="input-group">
+                <input type="text" id="urlInput" placeholder="Enter test.in URL (e.g. AWS link)..."
+                    style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 12px; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); color: white;">
+                <textarea id="inputText" placeholder="...or paste test.in content here"></textarea>
+            </div>
+            <div class="button-row">
+                <button id="fetchBtn" class="primary-btn" style="background: #10b981;">Fetch & Start</button>
+                <button id="startBtn" class="primary-btn">Start from Text</button>
+                <button id="resetBtn" class="secondary-btn">Reset</button>
+            </div>
+            <div class="playback-controls" style="display: none;">
+                <button id="playPauseBtn">Play</button>
+                <input type="range" id="speedRange" min="1" max="100" value="50">
+                <span id="statText">Throws: 0 | Current: -</span>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas"></canvas>
+            <div id="loadingOverlay" class="hidden">Parsing Data...</div>
+        </div>
+
+        <div class="info-panel">
+            <h3>Game Rules</h3>
+            <ul>
+                <li>Players throw in 45° increments clockwise.</li>
+                <li>First player doesn't count as a throw.</li>
+                <li>Game ends when no target is found in any of the 8 directions.</li>
+            </ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
